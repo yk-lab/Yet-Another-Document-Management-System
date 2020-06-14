@@ -16,6 +16,7 @@ django-filter = "*"
 django-python3-ldap = "*"
 django-extensions = "*"
 werkzeug = "*"
+django-model-utils = "*"
 
 [requires]
 python_version = "3.8"
