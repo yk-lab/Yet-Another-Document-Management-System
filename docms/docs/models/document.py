@@ -18,3 +18,7 @@ class Document(UUIDModel, TimeStampedModel, SoftDeletableModel):
         models.PROTECT,
         related_name='documents',
         verbose_name=_('registered by'))
+    tags = models.ManyToManyField(
+        'docs.Tag',
+        related_name='documents',
+        verbose_name=_('tags'))
