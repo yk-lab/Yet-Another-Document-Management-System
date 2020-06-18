@@ -23,8 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True\
-    if os.getenv('DEBUG') and os.getenv('DEBUG') in ['true', 'True']\
+DEBUG = True if os.getenv('DEBUG') in ['true', 'True']\
     else False
 
 ALLOWED_HOSTS = []
@@ -39,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'django_python3_ldap',
     'users',
     'docs',
