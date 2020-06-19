@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class Document(UUIDModel, TimeStampedModel, SoftDeletableModel):
-    removed = MonitorField(monitor='is_removed')
+    removed = MonitorField(monitor='is_removed', editable=False, null=True)
     title = models.CharField(
         verbose_name=_('title'),
         db_index=True,
