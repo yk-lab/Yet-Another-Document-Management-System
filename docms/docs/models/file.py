@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class File(UUIDModel, TimeStampedModel, SoftDeletableModel):
-    removed = MonitorField(monitor='is_removed')
+    removed = MonitorField(monitor='is_removed', editable=False, null=True)
     fileset = models.ForeignKey(
         'docs.Fileset',
         models.CASCADE,
