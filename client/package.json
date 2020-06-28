@@ -24,6 +24,7 @@
     }
   },
   "dependencies": {
+    "@aspida/axios": "^0.9.4",
     "@nuxt/typescript-runtime": "^0.4.10",
     "@nuxtjs/axios": "^5.11.0",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
@@ -67,6 +68,7 @@
     "ts-jest": "^26.1.0",
     "vue-jest": "^3.0.4",
     "vue-loader": "^15.9.2",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "vuex-module-decorators": "^0.17.0"
   }
 }

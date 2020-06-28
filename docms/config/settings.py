@@ -26,7 +26,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = True if os.getenv('DEBUG') in ['true', 'True']\
     else False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,6 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'django_python3_ldap',
+    'corsheaders',
+    'rest_framework',
+    'rest_auth',
+    'drf_yasg',
     'users',
     'docs',
 ]
@@ -47,6 +51,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -144,3 +149,20 @@ LDAP_AUTH_USER_FIELDS = {
     "last_name": "sn",
     "email": "mail",
 }
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+}
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+]
+CORS_ALLOW_CREDENTIALS = True
