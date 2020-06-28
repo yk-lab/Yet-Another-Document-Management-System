@@ -17,6 +17,10 @@ django-python3-ldap = "*"
 django-extensions = "*"
 werkzeug = "*"
 django-model-utils = "*"
+django-rest-auth = "*"
+djangorestframework-jwt = "*"
+drf-yasg = "*"
+django-cors-headers = "*"
 
 [requires]
 python_version = "3.8"
