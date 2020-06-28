@@ -3,3 +3,4 @@
 __pycache__/
 *.sqlite3
 docker-compose.override.yml
+node_modules
