@@ -11,7 +11,8 @@
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
     "lint": "yarn lint:js && yarn lint:style",
-    "test": "jest"
+    "test": "jest",
+    "storybook": "start-storybook"
   },
   "lint-staged": {
     "*.{js,vue}": "eslint",
@@ -27,30 +28,45 @@
     "@nuxtjs/axios": "^5.11.0",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
     "ant-design-vue": "^1.6.2",
+    "core-js": "2",
     "nuxt": "^2.13.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.10.3",
     "@nuxt/typescript-build": "^1.0.3",
     "@nuxtjs/eslint-config": "^3.0.0",
     "@nuxtjs/eslint-config-typescript": "^2.0.0",
     "@nuxtjs/eslint-module": "^2.0.0",
     "@nuxtjs/stylelint-module": "^4.0.0",
+    "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-knobs": "^5.3.19",
+    "@storybook/addon-links": "^5.3.19",
+    "@storybook/addon-notes": "^5.3.19",
+    "@storybook/addon-viewport": "^5.3.19",
+    "@storybook/addons": "^5.3.19",
+    "@storybook/vue": "^5.3.19",
     "@vue/test-utils": "^1.0.3",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.0.1",
+    "babel-loader": "^8.1.0",
+    "babel-preset-vue": "^2.0.2",
     "eslint": "^7.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-nuxt": "^1.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.2.5",
     "jest": "^26.0.1",
+    "less-loader": "^6.1.2",
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
+    "storybook-addon-vue-info": "^1.4.2",
     "stylelint": "^13.6.1",
     "stylelint-config-prettier": "^8.0.1",
     "stylelint-config-standard": "^20.0.0",
     "ts-jest": "^26.1.0",
-    "vue-jest": "^3.0.4"
+    "vue-jest": "^3.0.4",
+    "vue-loader": "^15.9.2",
+    "vue-template-compiler": "^2.6.11"
   }
 }

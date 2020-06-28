@@ -12,4 +12,8 @@
         "--aggressive", "--aggressive",
     ],
     "autoDocstring.docstringFormat": "numpy",
+    "[javascript]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    }
 }
