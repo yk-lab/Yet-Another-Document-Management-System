@@ -22,6 +22,13 @@
   resolved "https://registry.yarnpkg.com/@ant-design/icons/-/icons-2.1.1.tgz#7b9c08dffd4f5d41db667d9dbe5e0107d0bd9a4a"
   integrity sha512-jCH+k2Vjlno4YWl6g535nHR09PwCEmTBKAG6VqF+rhkrSPRLfgpU2maagwbZPLjaHuU5Jd1DFQ2KJpQuI6uG8w==
 
+"@aspida/axios@^0.9.4":
+  version "0.9.4"
+  resolved "https://registry.yarnpkg.com/@aspida/axios/-/axios-0.9.4.tgz#9a51a2c6ced10d3d8f00d8e33b02ed01534e6e83"
+  integrity sha512-lK9DHj+wvuv2y7JWzHAiyWdOLPrWKf4EjmeFmVhc7SpmwhNJ81XeZMLzl+wgjMPCP2UrT9cSxgTyjgp7MOtdGQ==
+  dependencies:
+    aspida "^0.19.4"
+
 "@babel/code-frame@7.5.5":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.5.5.tgz#bc0782f6d69f7b7d49531219699b988f669a8f9d"
@@ -3224,6 +3231,14 @@ asn1@~0.2.3:
   integrity sha512-jxwzQpLQjSmWXgwaCZE9Nz+glAG01yF1QnWgbhGwHI5A6FRIEY6IVqtHhIepHqI7/kyEyQEagBC5mBEFlIYvdg==
   dependencies:
     safer-buffer "~2.1.0"
+
+aspida@^0.19.4:
+  version "0.19.4"
+  resolved "https://registry.yarnpkg.com/aspida/-/aspida-0.19.4.tgz#d4547021d289481121f4fe2584f8cf9af3aeba93"
+  integrity sha512-L6SGCk0YYGxPLRCBlFiJIUVOqoUgwVGLxvMqpj7V9w5YW4M0xHXCkcHS6QR0l2RZLUavU4rHXKBIs7DVJAFEGg==
+  dependencies:
+    chokidar "^3.4.0"
+    minimist "^1.2.5"
 
 assert-plus@1.0.0, assert-plus@^1.0.0:
   version "1.0.0"
@@ -14580,6 +14595,11 @@ vuera@^0.2.3:
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/vuera/-/vuera-0.2.7.tgz#8046ac9a7ce961b1c81f84218b3be4eaaa7ba940"
   integrity sha512-MZErNEK+xXjxBzIDFL9cdEtX3TDZk4pMJGB+WLrlFOVro9okS/FeOSpdPFkpdyZUImZN/or4CrmztA932ChGEQ==
+
+vuex-module-decorators@^0.17.0:
+  version "0.17.0"
+  resolved "https://registry.yarnpkg.com/vuex-module-decorators/-/vuex-module-decorators-0.17.0.tgz#b170006f55f579f95415d7181fe5854830473d87"
+  integrity sha512-EFzrR3oyRMTHwpIgYzhW0BVKD71+FBs2U5Mn/ZQwlsaPyROZexDXTZTSYOYeuwg0kqQsK/YBkG4sQ8B4jmVMPg==
 
 vuex@^3.4.0:
   version "3.4.0"
