@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Document, File, Fileset
+
+
+admin.site.register((Document, File, Fileset))
