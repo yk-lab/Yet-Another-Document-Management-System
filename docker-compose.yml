@@ -4,5 +4,7 @@ services:
     build: .
     env_file: 
       - .env
+    environment:
+      PYTHONUNBUFFERED: 0
     ports:
       - "8000:8000"
