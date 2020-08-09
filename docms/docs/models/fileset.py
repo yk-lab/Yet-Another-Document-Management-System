@@ -9,7 +9,8 @@ class Fileset(UUIDModel, TimeStampedModel, SoftDeletableModel):
     removed = MonitorField(monitor='is_removed', editable=False, null=True)
     document = models.ForeignKey(
         'docs.Document',
-        models.CASCADE,
+        models.SET_NULL,
+        null=True,
         related_name='filesets',
         verbose_name=_('document'))
     name = models.CharField(

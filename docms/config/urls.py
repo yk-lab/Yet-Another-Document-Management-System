@@ -45,4 +45,6 @@ urlpatterns = [
     path('api-token/verify', verify_jwt_token),
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),
+
+    path('', include('docs.urls')),
 ]
