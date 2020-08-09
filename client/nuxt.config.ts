@@ -1,4 +1,8 @@
-export default {
+import Vue from 'vue'
+import { Configuration } from '@nuxt/types'
+import { Auth } from 'nuxtjs__auth'
+
+const nuxtConfig: Configuration = {
   /*
    ** Nuxt rendering mode
    ** See https://nuxtjs.org/api/configuration-mode
@@ -34,7 +38,12 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ['@/plugins/antd-ui', '@/plugins/api', '@/plugins/axios.accessor'],
+  plugins: [
+    '@/plugins/antd-ui',
+    '@/plugins/api',
+    '@/plugins/axios.accessor',
+    '@/plugins/composition-api',
+  ],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -45,6 +54,7 @@ export default {
    */
   buildModules: [
     '@nuxt/typescript-build',
+    '@nuxtjs/eslint-module',
     // Doc: https://github.com/nuxt-community/stylelint-module
     '@nuxtjs/stylelint-module',
   ],
@@ -55,17 +65,53 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
+    '@nuxtjs/auth',
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: 'http://127.0.0.1:8000/api-token', // aspidaにもbaseURLが反映されます
+    baseURL: 'http://127.0.0.1:8000', // aspidaにもbaseURLが反映されます
+  },
+  auth: {
+    redirect: {
+      login: '/login',
+      logout: '/login',
+      callback: false,
+      home: '/',
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: '/api-token/auth',
+            method: 'post',
+            propertyName: 'token',
+          },
+          logout: false,
+          user: false,
+        },
+        tokenType: 'JWT',
+      },
+    },
+    rewriteRedirects: true,
+    watchLoggedIn: false,
   },
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
   build: {},
+  router: {
+    middleware: ['auth'],
+  },
 }
+
+declare module 'vue/types/vue' {
+  interface Vue {
+    $auth: Auth
+  }
+}
+
+module.exports = nuxtConfig

@@ -1,14 +1,11 @@
 <template>
-  <input-file />
+  <InputFile />
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import InputFile from '@/components/FileUpload/InputFile.vue'
 
 export default Vue.extend({
-  components: {
-    'input-file': InputFile,
-  },
+  components: {},
 })
 </script>

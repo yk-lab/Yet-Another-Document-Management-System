@@ -1,10 +1,10 @@
 <template>
   <a-upload-dragger
     name="file"
-    :action="action"
     :multiple="multiple"
-    :list-type="listType"
-    @change="handleChange">
+    v-bind="$attrs"
+    v-on="$listeners"
+  >
     <p class="ant-upload-drag-icon">
       <a-icon type="inbox" />
     </p>
@@ -22,19 +22,12 @@
 
 <script lang="ts">
 import Vue from 'vue'
+
 export default Vue.extend({
   props: {
-    action: {
-      type: String,
-      required: true,
-    },
     multiple: {
       type: Boolean,
       default: false,
-    },
-    listType: {
-      type: String,
-      default: 'text',
     },
   },
 })
