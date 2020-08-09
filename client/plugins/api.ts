@@ -1,6 +1,7 @@
+import Vue from 'vue'
 import { Plugin } from '@nuxt/types'
 import axiosClient from '@aspida/axios'
-import api, { ApiInstance } from '~/apis/$api'
+import api, { ApiInstance } from '~/api/$api'
 
 declare module 'vue/types/vue' {
   interface Vue {
