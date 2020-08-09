@@ -35,4 +35,5 @@ storiesOf('Atoms/login forms', module).add(
           * boolean
             * 複数ファイル可否
         `,
-  })
+  }
+)

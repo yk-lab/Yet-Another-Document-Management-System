@@ -1,41 +1,46 @@
 <template>
-  <login-form v-bind.sync="loginData" :loading="isLoading" @onSubmit="submit" />
+  <LoginForm
+    v-bind.sync="loginData"
+    :loading="isLoading"
+    @onSubmit="loginWithAuthModule"
+  />
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import LoginForm from '@/components/LoginForm/LoginForm.vue'
-import { userStore } from '@/store'
+import { defineComponent, ref } from '@vue/composition-api'
 
-export default Vue.extend({
-  components: {
-    loginForm: LoginForm,
-  },
-  data() {
-    return {
-      loginData: {
-        username: '',
-        password: '',
-      },
-      isLoading: false,
+export type LoginData = {
+  username: string
+  password: string
+}
+
+export default defineComponent({
+  setup(_props, context) {
+    const loginData = ref<LoginData>({
+      username: '',
+      password: '',
+    })
+    const isLoading = ref(false)
+
+    const loginWithAuthModule = async () => {
+      try {
+        await context.root.$auth.loginWith('local', { data: loginData.value })
+        context.root.$message.success('Logged In!')
+        context.root.$router.replace({ path: '/' })
+      } catch (e) {
+        window.console.log(e)
+        context.root.$notification.error({
+          message: e.name,
+          description: e.message,
+        })
+      }
     }
-  },
-  mounted() {
-    window.console.log(this)
-  },
-  methods: {
-    submit(_: Event): void {
-      // TODO: エラーハンドリング
-      this.isLoading = true
-      this.$api.auth
-        .post({ body: this.loginData })
-        .then((res: any) => {
-          userStore.setToken(res.body.token)
-        })
-        .finally(() => {
-          this.isLoading = false
-        })
-    },
+
+    return {
+      loginData,
+      isLoading,
+      loginWithAuthModule,
+    }
   },
 })
 </script>
