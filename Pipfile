@@ -24,6 +24,7 @@ drf-yasg = "*"
 django-cors-headers = "*"
 boto3 = "*"
 django-storages = "*"
+mysqlclient = "*"
 
 [requires]
 python_version = "3.8"
