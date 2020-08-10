@@ -46,6 +46,9 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_auth',
     'drf_yasg',
+    'health_check',
+    'health_check.db',
+    # 'health_check.contrib.s3boto_storage',
     'users',
     'docs',
 ]

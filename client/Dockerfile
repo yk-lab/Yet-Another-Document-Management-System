@@ -1,4 +1,4 @@
-FROM kennethreitz/pipenv
+FROM node:14
 
 ENV DOCKERIZE_VERSION v0.6.1
 RUN apt-get update && apt-get install -y wget \
@@ -7,7 +7,9 @@ RUN apt-get update && apt-get install -y wget \
  && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
 WORKDIR /app
-COPY Pipfile* /app/
-COPY docms/. /app/
+COPY package*.json .
+RUN NODE_ENV=production yarn install
 
-CMD [ "python3", "./manage.py", "runserver", "0.0.0.0:8000" ]
+COPY . ./
+
+CMD [ "yarn", "serve" ]

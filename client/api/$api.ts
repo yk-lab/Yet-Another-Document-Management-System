@@ -95,9 +95,9 @@ const api = <T>({ baseURL, fetch }: AspidaClient<T>) => {
         fetch<Methods5['get']['resBody'], BasicHeaders, Methods5['get']['status']>(prefix, PATH4, GET, option).json().then(r => r.body)
     },
     upload: {
-      post: (option?: { config?: T }) =>
+      post: (option?: { body: any, config?: T }) =>
         fetch<void, BasicHeaders, Methods7['post']['status']>(prefix, PATH5, POST, option).send(),
-      $post: (option?: { config?: T }) =>
+      $post: (option?: { body: any, config?: T }) =>
         fetch<void, BasicHeaders, Methods7['post']['status']>(prefix, PATH5, POST, option).send().then(r => r.body)
     },
     upload_format_: {
