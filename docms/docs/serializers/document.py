@@ -3,7 +3,7 @@ from typing import List
 
 from rest_framework import serializers
 
-# from .fileset import FilesetSerializer
+from .fileset import FilesetSerializer
 from ..models import Document, Fileset, Tag
 from .tag import TagSerializer
 
@@ -12,7 +12,7 @@ logger = getLogger(__name__)
 
 class DocumentSerializer(serializers.ModelSerializer):
     tags = TagSerializer(many=True)
-    # filesets = FilesetSerializer(many=True)
+    filesets = FilesetSerializer(many=True)
 
     class Meta:
         model = Document

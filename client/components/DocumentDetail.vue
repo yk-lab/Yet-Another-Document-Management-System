@@ -15,6 +15,13 @@
         {{ document.registered_by }}
       </a-descriptions-item>
     </a-descriptions>
+    <file-preview
+      v-for="item in document.filesets"
+      :key="item.id"
+      :name="item.name"
+      :src="item.files[item.files.length - 1].file"
+    >
+    </file-preview>
   </div>
 </template>
 
