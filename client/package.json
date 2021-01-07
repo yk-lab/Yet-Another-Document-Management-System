@@ -24,7 +24,7 @@
     }
   },
   "dependencies": {
-    "@aspida/axios": "^0.10.1",
+    "@aspida/axios": "^1.1.1",
     "@nuxt/types": "^2.14.0",
     "@nuxt/typescript-runtime": "^1.0.0",
     "@nuxtjs/auth": "^4.9.1",
@@ -33,7 +33,7 @@
     "@types/lodash": "^4.14.158",
     "@types/marked": "^1.1.0",
     "@vue/composition-api": "^1.0.0-beta.6",
-    "ant-design-vue": "^1.6.4",
+    "ant-design-vue": "^1.7.2",
     "aws-sdk": "^2.720.0",
     "core-js": "^3.6.5",
     "lodash": "^4.17.19",
@@ -75,6 +75,7 @@
     "stylelint-config-prettier": "^8.0.1",
     "stylelint-config-standard": "^20.0.0",
     "ts-jest": "^26.1.0",
+    "ts-loader": "^8.0.12",
     "vue-jest": "^3.0.4",
     "vue-loader": "^15.9.2",
     "vue-template-compiler": "^2.6.11",

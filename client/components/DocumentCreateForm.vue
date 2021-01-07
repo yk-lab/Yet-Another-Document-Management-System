@@ -100,8 +100,11 @@ export default defineComponent({
             file_name: file.name,
           },
         })
+        // @ts-ignore
         fileUploadUrl.value = body?.action
+        // @ts-ignore
         fileUploadData.value = body?.fields
+        // @ts-ignore
         file.url = body?.url
       } catch (e) {
         if (e instanceof Error) {
@@ -116,9 +119,12 @@ export default defineComponent({
 
     const onSubmit = () => {
       const submit = _.cloneDeep(form)
+      // @ts-ignore
       submit.value.tags = submit.value.tags.map(
+        // @ts-ignore
         (value): Tag => {
           if (typeof value === 'string') {
+            // @ts-ignore
             return { code: value }
           }
           return value
@@ -126,6 +132,7 @@ export default defineComponent({
       )
       try {
         context.root.$api.documents.$post({
+          // @ts-ignore
           body: submit.value,
         })
       } catch (e) {

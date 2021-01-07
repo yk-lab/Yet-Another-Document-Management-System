@@ -8,25 +8,34 @@ from boto3.session import Session
 from botocore.config import Config
 from django.conf import settings
 from django.shortcuts import get_object_or_404
+from docs.models import File, Fileset
+from rest_framework import serializers
 from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
-from rest_framework.views import APIView
-
-from docs.models import File, Fileset
+from rest_framework.generics import GenericAPIView
 
 logger = getLogger(__name__)
 
 
-class UploadView(APIView):
+class UploadSerializer(serializers.Serializer):
+    file_name = serializers.CharField(max_length=256)
+    action = serializers.CharField(required=False)
+    fields = serializers.DictField(required=False)
+
+
+class UploadView(GenericAPIView):
     renderer_classes = [JSONRenderer]
+    # TODO: リクエストとレスポンスで分けれるなら分ける
+    serializer_class = UploadSerializer
 
     bucket_name = settings.DOCUMENT_FILE_BUCKET_NAME
     endpoint_url = settings.AWS_ENDPOINT_URL
 
     def post(self, request, format=None):
+        # serializer = UploadSerializer(data=request.data)
         file_name = Path(request.data['file_name'])\
-            if request.data.get('file_name') else ''
-        ext = file_name and file_name.suffix or ''
+            if request.data.get('file_name') else Path('')
+        ext = file_name and file_name.suffix
         if len(file_name.name) > 256:
             file_name.name = file_name.name[:256]
 

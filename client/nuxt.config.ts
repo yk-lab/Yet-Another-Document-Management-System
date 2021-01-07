@@ -7,7 +7,7 @@ const nuxtConfig: Configuration = {
    ** Nuxt rendering mode
    ** See https://nuxtjs.org/api/configuration-mode
    */
-  mode: 'spa',
+  ssr: false,
   /*
    ** Nuxt target
    ** See https://nuxtjs.org/api/configuration-target
@@ -72,7 +72,7 @@ const nuxtConfig: Configuration = {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: 'http://127.0.0.1:8000', // aspidaにもbaseURLが反映されます
+    baseURL: process.env.API_BASE_URL || 'http://127.0.0.1:8000', // aspidaにもbaseURLが反映されます
   },
   auth: {
     redirect: {

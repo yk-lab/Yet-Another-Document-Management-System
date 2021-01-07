@@ -13,8 +13,25 @@ export type VerifyJSONWebToken = {
 }
 
 export type Tag = {
+  id: string
+  code: string
+}
+
+export type File = {
+  id: string
+  file: string
+  filename: string
+  fileset: string
+  memo: string
+  is_removed: boolean
+  created: string
+  modified: string
+}
+
+export type Fileset = {
   id?: string
-  code?: string
+  name: string
+  files: File[]
 }
 
 export type Document = {
@@ -22,8 +39,17 @@ export type Document = {
   title: string
   summary?: string
   tags: Tag[]
-  filesets: string[]
+  filesets: Fileset[]
   created?: string
   modified?: string
   registered_by?: string
+}
+
+export type Upload = {
+  file_name: string
+  action?: string
+
+  fields?: {
+    [key: string]: string
+  }
 }
