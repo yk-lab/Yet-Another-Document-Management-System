@@ -2,7 +2,40 @@ version: '3.7'
 services: 
   web:
     build: .
-    env_file: 
+    env_file:
       - .env
-    ports:
-      - "8000:8000"
+    environment:
+      PYTHONUNBUFFERED: 0
+    links:
+      - db
+    entrypoint:
+      - dockerize
+      - -timeout
+      - 60s
+      - -wait
+      - tcp://db:3306
+    command: python3 ./manage.py runserver 0.0.0.0:8000
+  client:
+    build:
+      context: ./client
+    links:
+      - web
+    entrypoint:
+      - dockerize
+      - -timeout
+      - 60s
+      - -wait
+      - http://web:8000/healthcheck/
+    command: yarn dev --hostname 0.0.0.0
+  db:
+    image: mariadb
+    env_file:
+      - .env
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --slow-query-log=1 --thread-cache-size=5 --long-query-time=3
+    environment:
+      - "MYSQL_ROOT_PASSWORD_FILE=/run/secrets/mysql-root"
+    secrets:
+      - mysql-root
+secrets:
+  mysql-root:
+    file: ./secrets/mysql-root

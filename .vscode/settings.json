@@ -12,4 +12,17 @@
         "--aggressive", "--aggressive",
     ],
     "autoDocstring.docstringFormat": "numpy",
+    "[javascript]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    },
+    "[typescript]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    },
+    "python.linting.pydocstyleEnabled": true,
+    "vetur.format.defaultFormatter.ts": "vscode-typescript",
+    "python.analysis.extraPaths": [
+        "./docms"
+    ]
 }

@@ -8,6 +8,7 @@ mypy = "*"
 flake8 = "*"
 autopep8 = "*"
 coverage = "*"
+pydocstyle = "*"
 
 [packages]
 django = "*"
@@ -17,6 +18,14 @@ django-python3-ldap = "*"
 django-extensions = "*"
 werkzeug = "*"
 django-model-utils = "*"
+django-rest-auth = "*"
+djangorestframework-jwt = "*"
+drf-yasg = "*"
+django-cors-headers = "*"
+boto3 = "*"
+django-storages = "*"
+mysqlclient = "*"
+django-health-check = "*"
 
 [requires]
 python_version = "3.8"
