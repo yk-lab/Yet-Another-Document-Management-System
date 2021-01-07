@@ -6,8 +6,6 @@ services:
       - .env
     environment:
       PYTHONUNBUFFERED: 0
-    ports:
-      - "8000:8000"
     links:
       - db
     entrypoint:
@@ -17,7 +15,18 @@ services:
       - -wait
       - tcp://db:3306
     command: python3 ./manage.py runserver 0.0.0.0:8000
-
+  client:
+    build:
+      context: ./client
+    links:
+      - web
+    entrypoint:
+      - dockerize
+      - -timeout
+      - 60s
+      - -wait
+      - http://web:8000/healthcheck/
+    command: yarn dev --hostname 0.0.0.0
   db:
     image: mariadb
     env_file:

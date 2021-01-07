@@ -25,6 +25,7 @@ django-cors-headers = "*"
 boto3 = "*"
 django-storages = "*"
 mysqlclient = "*"
+django-health-check = "*"
 
 [requires]
 python_version = "3.8"

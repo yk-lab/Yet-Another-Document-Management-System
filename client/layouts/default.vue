@@ -10,6 +10,7 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
 import { Locale } from 'ant-design-vue/types/locale-provider'
+// @ts-ignore
 import jaJP from 'ant-design-vue/lib/locale-provider/ja_JP'
 import moment from 'moment'
 import 'moment/locale/ja'
