@@ -11,5 +11,5 @@ router.register('tags', TagViewSet)
 router.register('files', FileViewSet)
 
 urlpatterns = format_suffix_patterns([
-    path('upload/', UploadView.as_view()),
+    path('upload', UploadView.as_view()),
 ]) + router.urls

@@ -29,6 +29,7 @@
         :action="fileUploadUrl"
         :before-upload="beforeUpload"
         :data="fileUploadData"
+        :file-list="fileList"
         :multiple="true"
         method="PUT"
         @change="handleFileChange"
@@ -59,7 +60,7 @@ type CreateForm = {
   title: string
   tags: string[] | Tag[]
   summary: string
-  filesets: string[]
+  filesets: { id: string; name: string; files: string[] }[]
 }
 
 export default defineComponent({
@@ -72,6 +73,8 @@ export default defineComponent({
 
     const fileUploadUrl = ref('')
     const fileUploadData = ref({})
+
+    const fileList = ref<UploadFile[]>([])
 
     const formInit = ref<CreateForm>({
       title: '',
@@ -130,30 +133,44 @@ export default defineComponent({
           return value
         }
       )
+      submit.value.filesets = fileList.value.map((file) => {
+        return {
+          id: file.url,
+          name: file.name,
+          files: [],
+        }
+      })
       try {
         context.root.$api.documents.$post({
           // @ts-ignore
           body: submit.value,
         })
+        context.root.$message.success('保存しました！')
+        form.value = formInit.value
+        fileList.value = []
       } catch (e) {
         if (e instanceof Error) {
           context.root.$notification.error({
             message: e.name,
             description: e.message,
           })
+        } else {
+          throw e
         }
-        throw e
       }
-      context.root.$message.success('保存しました！')
-      form.value = formInit.value
     }
 
     const handleFileChange = (info: UploadChangeParam) => {
-      window.console.log(info)
+      const _fileList = [...info.fileList]
+      fileList.value = _fileList
+
       if (info.file.status === 'done') {
-        if (info.file.url) {
-          form.value.filesets = [...form.value.filesets, info.file.url]
-        }
+        // if (info.file.url) {
+        //   form.value.filesets = [
+        //     ...form.value.filesets,
+        //     { id: info.file.url, name: info.file.name, files: [] },
+        //   ]
+        // }
         context.root.$message.success(
           `${info.file.name} file uploaded successfully`
         )
@@ -178,6 +195,7 @@ export default defineComponent({
       beforeUpload,
       onSubmit,
       handleFileChange,
+      fileList,
     }
   },
 })

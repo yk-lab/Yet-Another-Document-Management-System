@@ -1,5 +1,5 @@
 from logging import getLogger
-from typing import List
+from typing import Dict, List
 
 from rest_framework import serializers
 
@@ -30,6 +30,9 @@ class DocumentSerializer(serializers.ModelSerializer):
 
     def validate_tags(self, values):
         return [self.__get_tag(value) for value in self.initial_data['tags']]
+
+    def validate_filesets(self, values):
+        return [Fileset.objects.get(pk=value['id']) for value in self.initial_data['filesets']]
 
     def create(self, validated_data):
         tags = validated_data.pop('tags')
