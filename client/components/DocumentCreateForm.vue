@@ -60,7 +60,7 @@ type CreateForm = {
   title: string
   tags: string[] | Tag[]
   summary: string
-  filesets: { id: string; name: string; files: string[] }[]
+  filesets: { id: string; name: string; files: object[] }[]
 }
 
 export default defineComponent({
@@ -135,7 +135,7 @@ export default defineComponent({
       )
       submit.value.filesets = fileList.value.map((file) => {
         return {
-          id: file.url,
+          id: file.url ?? '',
           name: file.name,
           files: [],
         }
